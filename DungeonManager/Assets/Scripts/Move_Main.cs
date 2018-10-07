@@ -11,6 +11,9 @@ public class Move_Main : MonoBehaviour {
     public bool isGrounded = true;
     public int YMoveDirection = 1;
 
+    public AudioSource movementSounds;
+    public AudioClip walkingClip;
+
 
     // Update is called once per frame
     void Update()
@@ -30,6 +33,14 @@ public class Move_Main : MonoBehaviour {
         {
             Jump();
         }
+        if (moveX != 0 && !movementSounds.isPlaying)
+        {
+            movementSounds.Play();
+        }
+        else if ((moveX == 0 || !isGrounded) && movementSounds.isPlaying)
+        {
+            movementSounds.Stop();
+        }
         //animations
         //player direction
         if (moveX < 0.0f && facingRight == true)
@@ -42,6 +53,7 @@ public class Move_Main : MonoBehaviour {
         }
         //physics
         gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(moveX * playerSpeed, gameObject.GetComponent<Rigidbody2D>().velocity.y);
+        //movementSounds.Play();
     }
 
     //Let the player jump when player presses jump key
