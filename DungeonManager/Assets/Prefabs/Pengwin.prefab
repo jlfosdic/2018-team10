@@ -281,7 +281,7 @@ MonoBehaviour:
   PenguinSpeed: 3
   XMoveDirection: -1
   facingRight: 0
-  jumpPower: 1100
+  jumpPower: 1420
   avoidLayers: 0800000002000000
 --- !u!114 &114749225777327384
 MonoBehaviour:
